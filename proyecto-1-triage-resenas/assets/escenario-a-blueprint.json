@@ -1,0 +1,1396 @@
+{
+    "name": "Escenario A - Detección y borrador",
+    "flow": [
+        {
+            "id": 2,
+            "module": "google-sheets:watchRows",
+            "version": 2,
+            "parameters": {
+                "from": "drive",
+                "mode": "select",
+                "limit": 1,
+                "sheetId": "Reseñas_Simuladas",
+                "__IMTCONN__": 9895408,
+                "spreadsheetId": "/1t4LNv3tuXla3EaTraZ8-exhmtMcgQMwm/1oq0ekKVDBV8NoMqc6ZdK5O0D2vtBrWxA/1s3ORpNcMxI_KcNQGcyENbX9nZY-hCBMrOcfHhN-ktJw",
+                "tableFirstRow": "A1:Z1",
+                "includesHeaders": true,
+                "valueRenderOption": "FORMATTED_VALUE",
+                "dateTimeRenderOption": "FORMATTED_STRING"
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 300
+                },
+                "restore": {
+                    "parameters": {
+                        "from": {
+                            "label": "My Drive"
+                        },
+                        "mode": {
+                            "label": "Search by path"
+                        },
+                        "sheetId": {
+                            "label": "Reseñas_Simuladas"
+                        },
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "google"
+                            },
+                            "label": "Pamela G (amour.pame@gmail.com)"
+                        },
+                        "spreadsheetId": {
+                            "path": [
+                                "Ejercicios de automatizaciones",
+                                "Ejercicio 1 - reseñas negativas",
+                                "reseñas_simuladas_ecommerce"
+                            ]
+                        },
+                        "includesHeaders": {
+                            "label": "Yes"
+                        },
+                        "valueRenderOption": {
+                            "mode": "chose",
+                            "label": "Formatted value"
+                        },
+                        "dateTimeRenderOption": {
+                            "mode": "chose",
+                            "label": "Formatted string"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:google",
+                        "label": "Connection",
+                        "required": true
+                    },
+                    {
+                        "name": "mode",
+                        "type": "select",
+                        "label": "Search Method",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "select",
+                                "fromAll",
+                                "map"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "includesHeaders",
+                        "type": "select",
+                        "label": "Table contains headers",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                true,
+                                false
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "type": "uinteger",
+                        "label": "Limit",
+                        "required": true
+                    },
+                    {
+                        "name": "valueRenderOption",
+                        "type": "select",
+                        "label": "Value render option",
+                        "validate": {
+                            "enum": [
+                                "FORMATTED_VALUE",
+                                "UNFORMATTED_VALUE",
+                                "FORMULA"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "dateTimeRenderOption",
+                        "type": "select",
+                        "label": "Date and time render option",
+                        "validate": {
+                            "enum": [
+                                "SERIAL_NUMBER",
+                                "FORMATTED_STRING"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "from",
+                        "type": "select",
+                        "label": "Drive",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "drive",
+                                "share",
+                                "team"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spreadsheetId",
+                        "type": "file",
+                        "label": "Spreadsheet ID",
+                        "required": true
+                    },
+                    {
+                        "name": "sheetId",
+                        "type": "select",
+                        "label": "Sheet Name",
+                        "required": true
+                    },
+                    {
+                        "name": "tableFirstRow",
+                        "type": "text",
+                        "label": "Row with headers",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "__ROW_NUMBER__",
+                        "type": "number",
+                        "label": "Row number"
+                    },
+                    {
+                        "name": "__SPREADSHEET_ID__",
+                        "type": "text",
+                        "label": "Spreadsheet ID"
+                    },
+                    {
+                        "name": "__SHEET__",
+                        "type": "text",
+                        "label": "Sheet"
+                    },
+                    {
+                        "name": "0",
+                        "type": "text",
+                        "label": "ID (A)"
+                    },
+                    {
+                        "name": "1",
+                        "type": "text",
+                        "label": "Nombre_Cliente (B)"
+                    },
+                    {
+                        "name": "2",
+                        "type": "text",
+                        "label": "Email_Cliente (C)"
+                    },
+                    {
+                        "name": "3",
+                        "type": "text",
+                        "label": "Rating (D)"
+                    },
+                    {
+                        "name": "4",
+                        "type": "text",
+                        "label": "Texto_Reseña (E)"
+                    },
+                    {
+                        "name": "5",
+                        "type": "text",
+                        "label": "Fecha (F)"
+                    },
+                    {
+                        "name": "6",
+                        "type": "text",
+                        "label": "(G)"
+                    },
+                    {
+                        "name": "7",
+                        "type": "text",
+                        "label": "(H)"
+                    },
+                    {
+                        "name": "8",
+                        "type": "text",
+                        "label": "(I)"
+                    },
+                    {
+                        "name": "9",
+                        "type": "text",
+                        "label": "(J)"
+                    },
+                    {
+                        "name": "10",
+                        "type": "text",
+                        "label": "(K)"
+                    },
+                    {
+                        "name": "11",
+                        "type": "text",
+                        "label": "(L)"
+                    },
+                    {
+                        "name": "12",
+                        "type": "text",
+                        "label": "(M)"
+                    },
+                    {
+                        "name": "13",
+                        "type": "text",
+                        "label": "(N)"
+                    },
+                    {
+                        "name": "14",
+                        "type": "text",
+                        "label": "(O)"
+                    },
+                    {
+                        "name": "15",
+                        "type": "text",
+                        "label": "(P)"
+                    },
+                    {
+                        "name": "16",
+                        "type": "text",
+                        "label": "(Q)"
+                    },
+                    {
+                        "name": "17",
+                        "type": "text",
+                        "label": "(R)"
+                    },
+                    {
+                        "name": "18",
+                        "type": "text",
+                        "label": "(S)"
+                    },
+                    {
+                        "name": "19",
+                        "type": "text",
+                        "label": "(T)"
+                    },
+                    {
+                        "name": "20",
+                        "type": "text",
+                        "label": "(U)"
+                    },
+                    {
+                        "name": "21",
+                        "type": "text",
+                        "label": "(V)"
+                    },
+                    {
+                        "name": "22",
+                        "type": "text",
+                        "label": "(W)"
+                    },
+                    {
+                        "name": "23",
+                        "type": "text",
+                        "label": "(X)"
+                    },
+                    {
+                        "name": "24",
+                        "type": "text",
+                        "label": "(Y)"
+                    },
+                    {
+                        "name": "25",
+                        "type": "text",
+                        "label": "(Z)"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 13,
+            "module": "anthropic-claude:simpleTextPrompt",
+            "version": 1,
+            "parameters": {},
+            "filter": {
+                "name": "Reseñas negativas",
+                "conditions": [
+                    [
+                        {
+                            "a": "{{2.`3`}}",
+                            "b": "2",
+                            "o": "number:lessorequal"
+                        }
+                    ]
+                ]
+            },
+            "mapper": {
+                "model": "claude-haiku-4-5",
+                "max_tokens": "10",
+                "textPrompt": "Eres un clasificador de quejas de e-commerce. Lee la siguiente reseña de un cliente y responde ÚNICAMENTE con una de estas tres palabras exactas, sin explicación adicional: logistica, calidad, atencion.\n\n- Responde \"logistica\" si la queja es sobre envíos, tiempos de entrega, o el estado del paquete al llegar.\n- Responde \"calidad\" si la queja es sobre el material, durabilidad, o defectos del producto.\n- Responde \"atencion\" si la queja es sobre el servicio al cliente, respuestas lentas, o mal trato.\n\nReseña del cliente:{{2.`4`}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 300
+                },
+                "restore": {
+                    "expect": {
+                        "model": {
+                            "label": "Claude Haiku 4.5The quickest option, perfect for simple questions and instant, straightforward answers"
+                        }
+                    }
+                },
+                "expect": [
+                    {
+                        "name": "model",
+                        "type": "select",
+                        "label": "Model",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "claude-haiku-4-5",
+                                "claude-opus-5",
+                                "claude-fable-5",
+                                "claude-sonnet-5",
+                                "claude-opus-4-8",
+                                "claude-opus-4-7",
+                                "claude-sonnet-4-6",
+                                "claude-opus-4-6",
+                                "claude-sonnet-4-5",
+                                "claude-opus-4-5"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "textPrompt",
+                        "type": "text",
+                        "label": "Text Prompt",
+                        "required": true
+                    },
+                    {
+                        "name": "max_tokens",
+                        "type": "uinteger",
+                        "label": "Max Tokens",
+                        "required": true
+                    }
+                ],
+                "advanced": true
+            }
+        },
+        {
+            "id": 22,
+            "module": "anthropic-claude:simpleTextPrompt",
+            "version": 1,
+            "parameters": {},
+            "mapper": {
+                "model": "claude-haiku-4-5",
+                "max_tokens": "300",
+                "textPrompt": "Eres un agente de atención al cliente de una tienda de e-commerce. Redacta un email breve, empático y profesional en español para un cliente que dejó una reseña negativa.\n\nDatos del cliente y su queja:\n- Nombre: {{2.`1`}}\n- Categoría del problema: {{13.result}}\n- Reseña original: {{2.`4`}}\n\nInstrucciones para el email:\n- Salúdalo por su nombre.\n- Reconoce específicamente su queja, sin inventar detalles que no mencionó.\n- Discúlpate de forma genuina, sin sonar robótico ni repetitivo.\n- Ofrece un siguiente paso concreto (revisar su caso, contactarlo en 24-48h, o similar) sin prometer reembolsos ni compensaciones específicas todavía.\n- Firma como \"Equipo de Atención al Cliente\".\n- No uses emojis. Máximo 120 palabras.\nResponde ÚNICAMENTE con el cuerpo del email, sin asunto, sin explicaciones adicionales, sin comillas."
+            },
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 300
+                },
+                "restore": {
+                    "expect": {
+                        "model": {
+                            "label": "Claude Haiku 4.5The quickest option, perfect for simple questions and instant, straightforward answers"
+                        }
+                    }
+                },
+                "expect": [
+                    {
+                        "name": "model",
+                        "type": "select",
+                        "label": "Model",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "claude-haiku-4-5",
+                                "claude-opus-5",
+                                "claude-fable-5",
+                                "claude-sonnet-5",
+                                "claude-opus-4-8",
+                                "claude-opus-4-7",
+                                "claude-sonnet-4-6",
+                                "claude-opus-4-6",
+                                "claude-sonnet-4-5",
+                                "claude-opus-4-5"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "textPrompt",
+                        "type": "text",
+                        "label": "Text Prompt",
+                        "required": true
+                    },
+                    {
+                        "name": "max_tokens",
+                        "type": "uinteger",
+                        "label": "Max Tokens",
+                        "required": true
+                    }
+                ],
+                "advanced": true
+            }
+        },
+        {
+            "id": 23,
+            "module": "airtable:ActionCreateRecord",
+            "version": 3,
+            "parameters": {
+                "__IMTCONN__": 10154308
+            },
+            "mapper": {
+                "base": "app1t1rI1moDNSqtC",
+                "table": "tbl3cH8tQXJPdNDxi",
+                "record": {
+                    "fld0rsPECtYd1jeoX": "{{2.`5`}}",
+                    "fld5KKJDVwi1aTBgI": "{{2.`4`}}",
+                    "fld7Rb2mdweDi6kva": "{{2.`0`}}",
+                    "fldNQLGDoD4wAMzKk": "Sobre tu experiencia con nosotros",
+                    "fldQIwaEGJuW9DOer": "{{2.`2`}}",
+                    "fldVjOQCRe8hiJXWf": "{{2.`3`}}",
+                    "fldXj0w5Wlu0dPyd0": "{{13.result}}",
+                    "fldk3liRvE8E1e8Dw": "{{22.result}}",
+                    "fldxNweWBG3GyinTS": "Pendiente",
+                    "fldzbxupBWbBsLp58": "{{2.`1`}}"
+                },
+                "typecast": false,
+                "useColumnId": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 900,
+                    "y": 300
+                },
+                "restore": {
+                    "expect": {
+                        "base": {
+                            "label": "Triage Reseñas - Ecommerce"
+                        },
+                        "table": {
+                            "label": "Reseñas",
+                            "nested": [
+                                {
+                                    "name": "record",
+                                    "spec": [
+                                        {
+                                            "name": "fld7Rb2mdweDi6kva",
+                                            "type": "text",
+                                            "label": "ID_Reseña"
+                                        },
+                                        {
+                                            "name": "fldzbxupBWbBsLp58",
+                                            "type": "text",
+                                            "label": "Nombre_Cliente"
+                                        },
+                                        {
+                                            "name": "fldQIwaEGJuW9DOer",
+                                            "type": "text",
+                                            "label": "Email_Cliente"
+                                        },
+                                        {
+                                            "name": "fldVjOQCRe8hiJXWf",
+                                            "type": "text",
+                                            "label": "Rating"
+                                        },
+                                        {
+                                            "name": "fld5KKJDVwi1aTBgI",
+                                            "type": "text",
+                                            "label": "Texto_Reseña",
+                                            "multiline": true
+                                        },
+                                        {
+                                            "name": "fldXj0w5Wlu0dPyd0",
+                                            "spec": {
+                                                "mode": "edit",
+                                                "type": "select",
+                                                "label": "Value",
+                                                "dynamic": true,
+                                                "options": [
+                                                    {
+                                                        "label": "calidad",
+                                                        "value": "calidad"
+                                                    },
+                                                    {
+                                                        "label": "atencion",
+                                                        "value": "atencion"
+                                                    },
+                                                    {
+                                                        "label": "logistica",
+                                                        "value": "logistica"
+                                                    }
+                                                ],
+                                                "validate": false
+                                            },
+                                            "type": "array",
+                                            "label": "Categoria"
+                                        },
+                                        {
+                                            "name": "fldk3liRvE8E1e8Dw",
+                                            "type": "text",
+                                            "label": "Borrador_Email",
+                                            "multiline": true
+                                        },
+                                        {
+                                            "name": "fldNQLGDoD4wAMzKk",
+                                            "type": "text",
+                                            "label": "Asunto_Email"
+                                        },
+                                        {
+                                            "name": "fldxNweWBG3GyinTS",
+                                            "spec": {
+                                                "mode": "edit",
+                                                "type": "select",
+                                                "label": "Value",
+                                                "dynamic": true,
+                                                "options": [
+                                                    {
+                                                        "label": "Pendiente",
+                                                        "value": "Pendiente"
+                                                    },
+                                                    {
+                                                        "label": "Aprobado",
+                                                        "value": "Aprobado"
+                                                    },
+                                                    {
+                                                        "label": "Enviado",
+                                                        "value": "Enviado"
+                                                    }
+                                                ],
+                                                "validate": false
+                                            },
+                                            "type": "array",
+                                            "label": "Estado"
+                                        },
+                                        {
+                                            "name": "fld0rsPECtYd1jeoX",
+                                            "time": false,
+                                            "type": "date",
+                                            "label": "Fecha"
+                                        }
+                                    ],
+                                    "type": "collection",
+                                    "label": "Record"
+                                }
+                            ]
+                        },
+                        "record": {
+                            "nested": {
+                                "fldXj0w5Wlu0dPyd0": {
+                                    "mode": "edit"
+                                },
+                                "fldxNweWBG3GyinTS": {
+                                    "mode": "edit"
+                                }
+                            }
+                        },
+                        "typecast": {
+                            "mode": "chose"
+                        },
+                        "useColumnId": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "airtable3"
+                            },
+                            "label": "Pamela's Airtable OAuth connection (User ID: usrYXLR5a4AlwNRme)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "typecast",
+                        "type": "boolean",
+                        "label": "Smart links",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "record",
+                        "spec": [
+                            {
+                                "name": "fld7Rb2mdweDi6kva",
+                                "type": "text",
+                                "label": "ID_Reseña"
+                            },
+                            {
+                                "name": "fldzbxupBWbBsLp58",
+                                "type": "text",
+                                "label": "Nombre_Cliente"
+                            },
+                            {
+                                "name": "fldQIwaEGJuW9DOer",
+                                "type": "text",
+                                "label": "Email_Cliente"
+                            },
+                            {
+                                "name": "fldVjOQCRe8hiJXWf",
+                                "type": "text",
+                                "label": "Rating"
+                            },
+                            {
+                                "name": "fld5KKJDVwi1aTBgI",
+                                "type": "text",
+                                "label": "Texto_Reseña"
+                            },
+                            {
+                                "name": "fldXj0w5Wlu0dPyd0",
+                                "spec": {
+                                    "mode": "edit",
+                                    "name": "value",
+                                    "type": "select",
+                                    "label": "Value",
+                                    "dynamic": true,
+                                    "options": [
+                                        {
+                                            "label": "calidad",
+                                            "value": "calidad"
+                                        },
+                                        {
+                                            "label": "atencion",
+                                            "value": "atencion"
+                                        },
+                                        {
+                                            "label": "logistica",
+                                            "value": "logistica"
+                                        }
+                                    ],
+                                    "validate": false
+                                },
+                                "type": "array",
+                                "label": "Categoria"
+                            },
+                            {
+                                "name": "fldk3liRvE8E1e8Dw",
+                                "type": "text",
+                                "label": "Borrador_Email"
+                            },
+                            {
+                                "name": "fldNQLGDoD4wAMzKk",
+                                "type": "text",
+                                "label": "Asunto_Email"
+                            },
+                            {
+                                "name": "fldxNweWBG3GyinTS",
+                                "spec": {
+                                    "mode": "edit",
+                                    "name": "value",
+                                    "type": "select",
+                                    "label": "Value",
+                                    "dynamic": true,
+                                    "options": [
+                                        {
+                                            "label": "Pendiente",
+                                            "value": "Pendiente"
+                                        },
+                                        {
+                                            "label": "Aprobado",
+                                            "value": "Aprobado"
+                                        },
+                                        {
+                                            "label": "Enviado",
+                                            "value": "Enviado"
+                                        }
+                                    ],
+                                    "validate": false
+                                },
+                                "type": "array",
+                                "label": "Estado"
+                            },
+                            {
+                                "name": "fld0rsPECtYd1jeoX",
+                                "time": false,
+                                "type": "date",
+                                "label": "Fecha"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Record"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created Time"
+                    },
+                    {
+                        "name": "ID_Reseña",
+                        "type": "text",
+                        "label": "ID_Reseña"
+                    },
+                    {
+                        "name": "Nombre_Cliente",
+                        "type": "text",
+                        "label": "Nombre_Cliente"
+                    },
+                    {
+                        "name": "Email_Cliente",
+                        "type": "text",
+                        "label": "Email_Cliente"
+                    },
+                    {
+                        "name": "Rating",
+                        "type": "text",
+                        "label": "Rating"
+                    },
+                    {
+                        "name": "Texto_Reseña",
+                        "type": "text",
+                        "label": "Texto_Reseña",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Categoria",
+                        "type": "array",
+                        "label": "Categoria",
+                        "dynamic": true,
+                        "editable": true
+                    },
+                    {
+                        "name": "Borrador_Email",
+                        "type": "text",
+                        "label": "Borrador_Email",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Asunto_Email",
+                        "type": "text",
+                        "label": "Asunto_Email"
+                    },
+                    {
+                        "name": "Estado",
+                        "type": "array",
+                        "label": "Estado",
+                        "dynamic": true,
+                        "editable": true
+                    },
+                    {
+                        "name": "Fecha",
+                        "time": false,
+                        "type": "date",
+                        "label": "Fecha"
+                    },
+                    {
+                        "name": "Ultima_Modificacion",
+                        "type": "date",
+                        "label": "Ultima_Modificacion"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 15,
+            "module": "builtin:BasicRouter",
+            "version": 1,
+            "mapper": null,
+            "metadata": {
+                "designer": {
+                    "x": 1200,
+                    "y": 300
+                }
+            },
+            "routes": [
+                {
+                    "flow": [
+                        {
+                            "id": 16,
+                            "module": "slack:CreateMessage",
+                            "version": 4,
+                            "parameters": {
+                                "__IMTCONN__": 10154788
+                            },
+                            "filter": {
+                                "name": "Ruta - logistica ",
+                                "conditions": [
+                                    [
+                                        {
+                                            "a": "{{13.result}}",
+                                            "b": "logistica",
+                                            "o": "text:equal"
+                                        }
+                                    ]
+                                ]
+                            },
+                            "mapper": {
+                                "text": "🚨 Nueva reseña negativa - LOGÍSTICA\n\nCliente: {{2.`1`}}\nRating: {{2.`3`}}\nReseña: \"{{2.`4`}}\"\nFecha:{{2.`5`}}",
+                                "parse": false,
+                                "mrkdwn": true,
+                                "channel": "C0BRF682WTU",
+                                "channelType": "public",
+                                "channelWType": "list"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1500,
+                                    "y": 0
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "parse": {
+                                            "mode": "chose"
+                                        },
+                                        "mrkdwn": {
+                                            "mode": "chose"
+                                        },
+                                        "channel": {
+                                            "mode": "chose",
+                                            "label": "prueba-logistica-alertas"
+                                        },
+                                        "link_names": {
+                                            "mode": "chose"
+                                        },
+                                        "channelType": {
+                                            "label": "Public channel"
+                                        },
+                                        "channelWType": {
+                                            "label": "Select from the list"
+                                        },
+                                        "unfurl_links": {
+                                            "mode": "chose"
+                                        },
+                                        "unfurl_media": {
+                                            "mode": "chose"
+                                        },
+                                        "reply_broadcast": {
+                                            "mode": "chose"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "slack3"
+                                            },
+                                            "label": "Pamela's Slack (bot) connection (organizaciond-zhu7697.slack.com - make)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:slack2,slack3",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "channelWType",
+                                        "type": "select",
+                                        "label": "Enter a channel ID or name",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "manualy",
+                                                "list"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "text",
+                                        "type": "text",
+                                        "label": "Text"
+                                    },
+                                    {
+                                        "name": "blocks",
+                                        "type": "text",
+                                        "label": "Blocks"
+                                    },
+                                    {
+                                        "name": "thread_ts",
+                                        "type": "text",
+                                        "label": "Thread message ID (time stamp)"
+                                    },
+                                    {
+                                        "name": "reply_broadcast",
+                                        "type": "boolean",
+                                        "label": "Reply broadcast"
+                                    },
+                                    {
+                                        "name": "link_names",
+                                        "type": "boolean",
+                                        "label": "Link names"
+                                    },
+                                    {
+                                        "name": "parse",
+                                        "type": "boolean",
+                                        "label": "Parse message text"
+                                    },
+                                    {
+                                        "name": "mrkdwn",
+                                        "type": "boolean",
+                                        "label": "Use markdown"
+                                    },
+                                    {
+                                        "name": "unfurl_links",
+                                        "type": "boolean",
+                                        "label": "Unfurl primarily text-based content"
+                                    },
+                                    {
+                                        "name": "unfurl_media",
+                                        "type": "boolean",
+                                        "label": "Unfurl media content"
+                                    },
+                                    {
+                                        "name": "icon_emoji",
+                                        "type": "text",
+                                        "label": "Icon emoji"
+                                    },
+                                    {
+                                        "name": "icon_url",
+                                        "type": "url",
+                                        "label": "Icon url"
+                                    },
+                                    {
+                                        "name": "username",
+                                        "type": "text",
+                                        "label": "User name"
+                                    },
+                                    {
+                                        "name": "channelType",
+                                        "type": "select",
+                                        "label": "Channel type",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "public",
+                                                "private",
+                                                "im",
+                                                "mpim"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "channel",
+                                        "type": "select",
+                                        "label": "Public channel",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "flow": [
+                        {
+                            "id": 20,
+                            "module": "slack:CreateMessage",
+                            "version": 4,
+                            "parameters": {
+                                "__IMTCONN__": 10154788
+                            },
+                            "filter": {
+                                "name": "Ruta - calidad ",
+                                "conditions": [
+                                    [
+                                        {
+                                            "a": "{{13.result}}",
+                                            "b": "calidad",
+                                            "o": "text:equal"
+                                        }
+                                    ]
+                                ]
+                            },
+                            "mapper": {
+                                "text": "📦 Nueva reseña negativa - CALIDAD\n\nCliente: {{2.`1`}}\nRating: {{2.`3`}}\nReseña: \"{{2.`4`}}\"\nFecha:{{2.`5`}}",
+                                "parse": false,
+                                "mrkdwn": true,
+                                "channel": "C0BRH5JD8E5",
+                                "channelType": "public",
+                                "channelWType": "list"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1500,
+                                    "y": 300
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "parse": {
+                                            "mode": "chose"
+                                        },
+                                        "mrkdwn": {
+                                            "mode": "chose"
+                                        },
+                                        "channel": {
+                                            "mode": "chose",
+                                            "label": "prueba-calidad-alertas"
+                                        },
+                                        "link_names": {
+                                            "mode": "chose"
+                                        },
+                                        "channelType": {
+                                            "label": "Public channel"
+                                        },
+                                        "channelWType": {
+                                            "label": "Select from the list"
+                                        },
+                                        "unfurl_links": {
+                                            "mode": "chose"
+                                        },
+                                        "unfurl_media": {
+                                            "mode": "chose"
+                                        },
+                                        "reply_broadcast": {
+                                            "mode": "chose"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "slack3"
+                                            },
+                                            "label": "Pamela's Slack (bot) connection (organizaciond-zhu7697.slack.com - make)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:slack2,slack3",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "channelWType",
+                                        "type": "select",
+                                        "label": "Enter a channel ID or name",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "manualy",
+                                                "list"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "text",
+                                        "type": "text",
+                                        "label": "Text"
+                                    },
+                                    {
+                                        "name": "blocks",
+                                        "type": "text",
+                                        "label": "Blocks"
+                                    },
+                                    {
+                                        "name": "thread_ts",
+                                        "type": "text",
+                                        "label": "Thread message ID (time stamp)"
+                                    },
+                                    {
+                                        "name": "reply_broadcast",
+                                        "type": "boolean",
+                                        "label": "Reply broadcast"
+                                    },
+                                    {
+                                        "name": "link_names",
+                                        "type": "boolean",
+                                        "label": "Link names"
+                                    },
+                                    {
+                                        "name": "parse",
+                                        "type": "boolean",
+                                        "label": "Parse message text"
+                                    },
+                                    {
+                                        "name": "mrkdwn",
+                                        "type": "boolean",
+                                        "label": "Use markdown"
+                                    },
+                                    {
+                                        "name": "unfurl_links",
+                                        "type": "boolean",
+                                        "label": "Unfurl primarily text-based content"
+                                    },
+                                    {
+                                        "name": "unfurl_media",
+                                        "type": "boolean",
+                                        "label": "Unfurl media content"
+                                    },
+                                    {
+                                        "name": "icon_emoji",
+                                        "type": "text",
+                                        "label": "Icon emoji"
+                                    },
+                                    {
+                                        "name": "icon_url",
+                                        "type": "url",
+                                        "label": "Icon url"
+                                    },
+                                    {
+                                        "name": "username",
+                                        "type": "text",
+                                        "label": "User name"
+                                    },
+                                    {
+                                        "name": "channelType",
+                                        "type": "select",
+                                        "label": "Channel type",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "public",
+                                                "private",
+                                                "im",
+                                                "mpim"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "channel",
+                                        "type": "select",
+                                        "label": "Public channel",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "flow": [
+                        {
+                            "id": 21,
+                            "module": "slack:CreateMessage",
+                            "version": 4,
+                            "parameters": {
+                                "__IMTCONN__": 10154788
+                            },
+                            "filter": {
+                                "name": "Ruta - atencion",
+                                "conditions": [
+                                    [
+                                        {
+                                            "a": "{{13.result}}",
+                                            "b": "atencion",
+                                            "o": "text:equal"
+                                        }
+                                    ]
+                                ]
+                            },
+                            "mapper": {
+                                "text": "🎧 Nueva reseña negativa - ATENCIÓN\n\nCliente: {{2.`1`}}\nRating: {{2.`3`}}\nReseña: \"{{2.`4`}}\"\nFecha:{{2.`5`}}",
+                                "parse": false,
+                                "mrkdwn": true,
+                                "channel": "C0BRBDG00G5",
+                                "channelType": "public",
+                                "channelWType": "list"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1500,
+                                    "y": 600
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "parse": {
+                                            "mode": "chose"
+                                        },
+                                        "mrkdwn": {
+                                            "mode": "chose"
+                                        },
+                                        "channel": {
+                                            "mode": "chose",
+                                            "label": "prueba-atencion-alertas"
+                                        },
+                                        "link_names": {
+                                            "mode": "chose"
+                                        },
+                                        "channelType": {
+                                            "label": "Public channel"
+                                        },
+                                        "channelWType": {
+                                            "label": "Select from the list"
+                                        },
+                                        "unfurl_links": {
+                                            "mode": "chose"
+                                        },
+                                        "unfurl_media": {
+                                            "mode": "chose"
+                                        },
+                                        "reply_broadcast": {
+                                            "mode": "chose"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "slack3"
+                                            },
+                                            "label": "Pamela's Slack (bot) connection (organizaciond-zhu7697.slack.com - make)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:slack2,slack3",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "channelWType",
+                                        "type": "select",
+                                        "label": "Enter a channel ID or name",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "manualy",
+                                                "list"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "text",
+                                        "type": "text",
+                                        "label": "Text"
+                                    },
+                                    {
+                                        "name": "blocks",
+                                        "type": "text",
+                                        "label": "Blocks"
+                                    },
+                                    {
+                                        "name": "thread_ts",
+                                        "type": "text",
+                                        "label": "Thread message ID (time stamp)"
+                                    },
+                                    {
+                                        "name": "reply_broadcast",
+                                        "type": "boolean",
+                                        "label": "Reply broadcast"
+                                    },
+                                    {
+                                        "name": "link_names",
+                                        "type": "boolean",
+                                        "label": "Link names"
+                                    },
+                                    {
+                                        "name": "parse",
+                                        "type": "boolean",
+                                        "label": "Parse message text"
+                                    },
+                                    {
+                                        "name": "mrkdwn",
+                                        "type": "boolean",
+                                        "label": "Use markdown"
+                                    },
+                                    {
+                                        "name": "unfurl_links",
+                                        "type": "boolean",
+                                        "label": "Unfurl primarily text-based content"
+                                    },
+                                    {
+                                        "name": "unfurl_media",
+                                        "type": "boolean",
+                                        "label": "Unfurl media content"
+                                    },
+                                    {
+                                        "name": "icon_emoji",
+                                        "type": "text",
+                                        "label": "Icon emoji"
+                                    },
+                                    {
+                                        "name": "icon_url",
+                                        "type": "url",
+                                        "label": "Icon url"
+                                    },
+                                    {
+                                        "name": "username",
+                                        "type": "text",
+                                        "label": "User name"
+                                    },
+                                    {
+                                        "name": "channelType",
+                                        "type": "select",
+                                        "label": "Channel type",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "public",
+                                                "private",
+                                                "im",
+                                                "mpim"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "channel",
+                                        "type": "select",
+                                        "label": "Public channel",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "instant": false,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "us2.make.com",
+        "notes": []
+    }
+}
