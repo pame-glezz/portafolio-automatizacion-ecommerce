@@ -173,6 +173,49 @@ Con un saldo de referencia de $5 USD en la API de Anthropic, el volumen de llama
 
 ---
 
-## 📹 Demo
+## 📹 Demo en video
 
-*(Espacio reservado para GIF o video corto mostrando el flujo completo: reseña nueva → clasificación → alerta en Slack → aprobación en Airtable → email recibido)*
+- **Parte 1 — Escenarios A y B** (detección, clasificación, borrador, aprobación y envío): [Ver en YouTube](https://youtu.be/eXR8mVEOm_0)
+- **Parte 2 — Escenario C** (recordatorio de aprobación pendiente): [Ver en YouTube](https://youtu.be/86BQiCZ4Wi8)
+
+## 🔗 Recursos en vivo
+
+- **Base de Airtable (vista de solo lectura, sin necesidad de cuenta):** [Ver base en Airtable](https://airtable.com/app1t1rI1moDNSqtC/shrEy5u6HNkZzIV0a)
+
+---
+
+## 🖼️ Capturas del proyecto
+
+### Los 3 escenarios en Make
+
+| Escenario A — Detección y borrador |
+|---|
+| ![Escenario A](./assets/escenario-a.png) |
+
+| Escenario B — Aprobación y envío | Escenario C — Recordatorio de pendientes |
+|---|---|
+| ![Escenario B](./assets/escenario-b.png) | ![Escenario C](./assets/escenario-c.png) |
+
+### El flujo en acción
+
+| Reseña simulada (Google Sheets) | Alerta en Slack |
+|---|---|
+| ![Captura de Google Sheets](./assets/captura-googlesheets.png) | ![Notificación en Slack](./assets/captura-slack-notificacion.png) |
+
+| Registro en Airtable | Recordatorio de pendientes (Slack) |
+|---|---|
+| ![Captura de Airtable](./assets/captura-airtable.png) | ![Recordatorio en Slack](./assets/captura-slack-recordatorio.png) |
+
+### Email recibido por el cliente
+
+![Email recibido](./assets/captura-email.png)
+
+---
+
+## 🧩 Configuración técnica exportada
+
+Cada escenario se puede exportar desde Make como un archivo "blueprint" (JSON), con la configuración completa de módulos, campos y conexiones:
+
+- [`escenario-a-blueprint.json`](./assets/escenario-a-blueprint.json) — Detección y borrador
+- [`escenario-b-blueprint.json`](./assets/escenario-b-blueprint.json) — Aprobación y envío
+- [`escenario-c-blueprint.json`](./assets/escenario-c-blueprint.json) — Recordatorio de pendientes
